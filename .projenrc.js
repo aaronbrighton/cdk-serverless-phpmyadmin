@@ -13,9 +13,7 @@ const project = new AwsCdkTypeScriptApp({
   deps: [
     'cdk-serverless-php-mpa',
   ],
-  projectType: ProjectType.APP,
-  release: true,
-  projenUpgradeAutoMerge: true,
+  projectType: ProjectType.APP
 });
 
 project.tasks.addTask('install-phpmyadmin', {
