@@ -1,16 +1,33 @@
 const { AwsCdkTypeScriptApp } = require('projen');
+const { ProjectType } = require('projen');
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.95.2',
+  cdkVersion: '1.109.0',
   defaultReleaseBranch: 'main',
   name: 'cdk-serverless-phpmyadmin',
   stability: 'experimental',
-
-  // cdkDependencies: undefined,        /* Which AWS CDK modules (those that start with "@aws-cdk/") this app uses. */
-  // deps: [],                          /* Runtime dependencies of this module. */
-  // description: undefined,            /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],                       /* Build dependencies for this module. */
-  // packageName: undefined,            /* The "name" in package.json. */
-  // projectType: ProjectType.UNKNOWN,  /* Which type of project this is (library/app). */
-  // release: undefined,                /* Add release management to this project. */
+  authorAddress: 'aaron@aaronbrighton.ca',
+  authorName: 'Aaron Brighton',
+  cdkDependencies: [
+    '@aws-cdk/core',
+  ],
+  deps: [
+    'cdk-serverless-php-mpa',
+  ],
+  projectType: ProjectType.APP,
+  release: true,
+  projenUpgradeAutoMerge: true,
 });
+
+project.tasks.addTask('install-phpmyadmin', {
+  name: 'install-phpmyadmin',
+  description: 'Use composer to retrieve latest phpMyAdmin to src/phpmyadmin/ and configure config.inc.php.',
+  exec: 'composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev --working-dir=src',
+});
+project.tasks.tryFind('install-phpmyadmin').exec('node src/config-phpmyadmin.js');
+
+project.npmignore.removePatterns('!/src');
+project.gitignore.removePatterns('!/src');
+project.npmignore.exclude('src/phpmyadmin');
+project.gitignore.exclude('src/phpmyadmin');
+
 project.synth();

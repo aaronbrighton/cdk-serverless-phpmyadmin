@@ -8,6 +8,8 @@
     "build": "npx projen build",
     "test:watch": "npx projen test:watch",
     "test:update": "npx projen test:update",
+    "bump": "npx projen bump",
+    "unbump": "npx projen unbump",
     "upgrade-dependencies": "npx projen upgrade-dependencies",
     "upgrade-projen": "npx projen upgrade-projen",
     "default": "npx projen default",
@@ -16,15 +18,20 @@
     "deploy": "npx projen deploy",
     "destroy": "npx projen destroy",
     "diff": "npx projen diff",
+    "install-phpmyadmin": "npx projen install-phpmyadmin",
     "projen": "npx projen",
     "start": "npx projen start"
+  },
+  "author": {
+    "name": "Aaron Brighton",
+    "organization": false
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
-    "aws-cdk": "^1.95.2",
+    "aws-cdk": "^1.109.0",
     "eslint": "^7.28.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -34,13 +41,15 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "projen": "^0.22.15",
+    "standard-version": "^9",
     "ts-jest": "^27.0.3",
     "ts-node": "^9",
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@aws-cdk/assert": "^1.95.2",
-    "@aws-cdk/core": "^1.95.2"
+    "@aws-cdk/assert": "^1.109.0",
+    "@aws-cdk/core": "^1.109.0",
+    "cdk-serverless-php-mpa": "^0.0.0"
   },
   "bundledDependencies": [],
   "license": "Apache-2.0",
