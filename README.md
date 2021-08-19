@@ -2,7 +2,7 @@
 
 Traditionally web hosting platforms offer an easy to use and convenient way to quickly visualize and manipulate data inside an MySQL database (typically via phpMyAdmin).  Unfortunately, Amazon RDS lacks this functionality at present.  Leveraging [cdk-serverless-php-mpa](https://github.com/aaronbrighton/cdk-serverless-php-mpa) this CDK app attempts to fill that gap by provisioning a serverless RDS database, and launching a serverless deployment of phpMyAdmin thanks in large-part due to the work done by the [Bref](https://bref.sh/) team to make running PHP on AWS Lambda a reality.
 
-## Archictecture
+## Architecture
 
 ![AWS Architecture Diagram](docs/complex-php-app-phpmyadmin.svg)
 
